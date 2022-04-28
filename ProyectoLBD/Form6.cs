@@ -28,7 +28,6 @@ namespace ProyectoLBD
             OracleConnection conexion = new OracleConnection("DATA SOURCE = ORCL; PASSWORD = proyecto; USER ID = proyecto;");
             conexion.Open();
             OracleCommand loguear = new OracleCommand("SELECT * from USUARIOS WHERE USUARIO = :usuario AND CONTRASEñA = :contraseña", conexion);
-
             loguear.Parameters.AddWithValue(":usuario", textBox3.Text);
             loguear.Parameters.AddWithValue(":contraseña", textBox4.Text);
 
