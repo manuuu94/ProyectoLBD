@@ -18,6 +18,7 @@ namespace ProyectoLBD
             InitializeComponent();
             button1.Text = "LAVADOS";
             button2.Text = "TIENDA";
+            button3.Text = "CAFETERIA";
         }
 
 
@@ -61,12 +62,21 @@ namespace ProyectoLBD
         {
             Form3 F3 = new Form3();
             F3.Show();
+            this.Dispose();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Form4 F4 = new Form4();
             F4.Show();
+            this.Dispose();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form14 F14 = new Form14();
+            F14.Show();
+            this.Dispose();
         }
     }
 }

@@ -9,12 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace ProyectoLBD
 {
-    public partial class Form3 : Form
+    public partial class Form14 : Form
     {
-        public Form3()
+        public Form14()
         {
             InitializeComponent();
             populateGridView();
@@ -22,16 +21,14 @@ namespace ProyectoLBD
             button2.Anchor = AnchorStyles.Right | AnchorStyles.Top;
         }
 
-
-
-        public void populateGridView()
+        private void populateGridView()
         {
             OracleConnection conexion = new OracleConnection("DATA SOURCE = ORCL; PASSWORD = proyecto1; USER ID = proyecto1;");
             conexion.Open();
-            OracleCommand comando = new OracleCommand("SELECCIONAR_LAVADOS_CLIENTES", conexion);
+            OracleCommand comando = new OracleCommand("SELECCIONAR_CAFETERIA", conexion);
             comando.CommandType = System.Data.CommandType.StoredProcedure;
             /*añadir los parámetros*/
-            comando.Parameters.Add("filas2", OracleType.Cursor).Direction = ParameterDirection.Output;
+            comando.Parameters.Add("filas11", OracleType.Cursor).Direction = ParameterDirection.Output;
             /*si hay mas parametros se usa el comando cuantas veces sea necesario*/
             /*adaptador para ajustar de Oracle a C#. Convierte informacion en la base al tipo de info en C# */
             OracleDataAdapter adaptador = new OracleDataAdapter();
@@ -46,19 +43,10 @@ namespace ProyectoLBD
             dataGridView1.DataSource = tabla;
             /*siempre cerrar la conexion */
             conexion.Close();
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Form3_Load(object sender, EventArgs e)
         {
 
         }
@@ -68,6 +56,7 @@ namespace ProyectoLBD
             Form2 F1 = new Form2();
             F1.Show();
             this.Dispose();
+
         }
     }
 }

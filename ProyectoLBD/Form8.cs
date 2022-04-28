@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace ProyectoLBD
 {
-    public partial class Form5 : Form
+    public partial class Form8 : Form
     {
-        public Form5()
+        public Form8()
         {
             InitializeComponent();
             populateGridView();
@@ -25,10 +25,10 @@ namespace ProyectoLBD
         {
             OracleConnection conexion = new OracleConnection("DATA SOURCE = ORCL; PASSWORD = proyecto1; USER ID = proyecto1;");
             conexion.Open();
-            OracleCommand comando = new OracleCommand("SELECCIONAR_CLIENTES_ADMIN", conexion);
+            OracleCommand comando = new OracleCommand("SELECCIONAR_LAVADOS_ADMIN", conexion);
             comando.CommandType = System.Data.CommandType.StoredProcedure;
             /*añadir los parámetros*/
-            comando.Parameters.Add("filas6", OracleType.Cursor).Direction = ParameterDirection.Output;
+            comando.Parameters.Add("filas4", OracleType.Cursor).Direction = ParameterDirection.Output;
             /*si hay mas parametros se usa el comando cuantas veces sea necesario*/
             /*adaptador para ajustar de Oracle a C#. Convierte informacion en la base al tipo de info en C# */
             OracleDataAdapter adaptador = new OracleDataAdapter();
@@ -45,21 +45,6 @@ namespace ProyectoLBD
             conexion.Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             Form7 F7 = new Form7();
@@ -67,60 +52,44 @@ namespace ProyectoLBD
             this.Dispose();
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void Form8_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click_1(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             OracleConnection conexion = new OracleConnection("DATA SOURCE = ORCL; PASSWORD = proyecto1; USER ID = proyecto1;");
             conexion.Open();
-            OracleCommand comando = new OracleCommand("INSERTARPROYECTO.INSERTARCLIENTES", conexion);
+            OracleCommand comando = new OracleCommand("INSERTARPROYECTO.INSERTARLAVADOS", conexion);
             comando.CommandType = System.Data.CommandType.StoredProcedure;
-            comando.Parameters.Add("Nombre", OracleType.VarChar).Value = textBox1.Text;
-            comando.Parameters.Add("PrimerApellido", OracleType.VarChar).Value = textBox2.Text;
-            comando.Parameters.Add("SegundoApellido", OracleType.VarChar).Value = textBox3.Text;
-            comando.Parameters.Add("Cedula", OracleType.VarChar).Value = textBox4.Text;
-            comando.Parameters.Add("FechaDePrimerIngreso", OracleType.VarChar).Value = textBox5.Text;
+            comando.Parameters.Add("nombreLavado", OracleType.VarChar).Value = textBox1.Text;
+            comando.Parameters.Add("precio", OracleType.VarChar).Value = textBox2.Text;
+            comando.Parameters.Add("idServicio", OracleType.VarChar).Value = 0;
             comando.ExecuteNonQuery();
-            MessageBox.Show("Cliente insertado");
+            MessageBox.Show("Lavado insertado");
             conexion.Close();
-
-
-
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             OracleConnection conexion = new OracleConnection("DATA SOURCE = ORCL; PASSWORD = proyecto1; USER ID = proyecto1;");
             conexion.Open();
-            OracleCommand comando = new OracleCommand("ELIMINARPROYECTO.ELIMINARCLIENTES", conexion);
+            OracleCommand comando = new OracleCommand("ELIMINARPROYECTO.ELIMINARLAVADOS", conexion);
             comando.CommandType = System.Data.CommandType.StoredProcedure;
-            comando.Parameters.Add("idCliente", OracleType.Number).Value = Convert.ToInt32(textBox6.Text); 
+            comando.Parameters.Add("idLavado", OracleType.Number).Value = Convert.ToInt32(textBox6.Text);
             comando.ExecuteNonQuery();
-            MessageBox.Show("Cliente Eliminado");
+            MessageBox.Show("Lavado Eliminado");
             conexion.Close();
         }
 
@@ -128,16 +97,14 @@ namespace ProyectoLBD
         {
             OracleConnection conexion = new OracleConnection("DATA SOURCE = ORCL; PASSWORD = proyecto1; USER ID = proyecto1;");
             conexion.Open();
-            OracleCommand comando = new OracleCommand("MODIFICARPROYECTO.MODIFICARCLIENTES", conexion);
+            OracleCommand comando = new OracleCommand("MODIFICARPROYECTO.MODIFICARLAVADOS", conexion);
             comando.CommandType = System.Data.CommandType.StoredProcedure;
-            comando.Parameters.Add("idCliente", OracleType.Number).Value = Convert.ToInt32(textBox6.Text);
-            comando.Parameters.Add("Nombre", OracleType.VarChar).Value = textBox1.Text;
-            comando.Parameters.Add("PrimerApellido", OracleType.VarChar).Value = textBox2.Text;
-            comando.Parameters.Add("SegundoApellido", OracleType.VarChar).Value = textBox3.Text;
-            comando.Parameters.Add("Cedula", OracleType.Number).Value = Convert.ToInt32(textBox4.Text);
-            comando.Parameters.Add("FechaDePrimerIngreso", OracleType.VarChar).Value = textBox5.Text;
+            comando.Parameters.Add("idLavado", OracleType.Number).Value = Convert.ToInt32(textBox6.Text);
+            comando.Parameters.Add("nombreLavado", OracleType.VarChar).Value = textBox1.Text;
+            comando.Parameters.Add("precio", OracleType.VarChar).Value = textBox2.Text;
+            comando.Parameters.Add("idServicio", OracleType.Number).Value = 0;
             comando.ExecuteNonQuery();
-            MessageBox.Show("Cliente Actualizado");
+            MessageBox.Show("Lavado Actualizado");
             conexion.Close();
         }
     }

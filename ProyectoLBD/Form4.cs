@@ -18,14 +18,14 @@ namespace ProyectoLBD
             InitializeComponent();
             populateGridView();
             dataGridView1.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom | AnchorStyles.Top;
-
+            button1.Anchor = AnchorStyles.Right | AnchorStyles.Top;
         }
 
         public void populateGridView()
         {
-            OracleConnection conexion = new OracleConnection("DATA SOURCE = ORCL; PASSWORD = 123; USER ID = MANUEL;");
+            OracleConnection conexion = new OracleConnection("DATA SOURCE = ORCL; PASSWORD = proyecto1; USER ID = proyecto1;");
             conexion.Open();
-            OracleCommand comando = new OracleCommand("SELECCIONAR_TIENDA", conexion);
+            OracleCommand comando = new OracleCommand("SELECCIONAR_TIENDA_CLIENTES", conexion);
             comando.CommandType = System.Data.CommandType.StoredProcedure;
             /*añadir los parámetros*/
             comando.Parameters.Add("filas3", OracleType.Cursor).Direction = ParameterDirection.Output;
@@ -46,6 +46,18 @@ namespace ProyectoLBD
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 F1 = new Form2();
+            F1.Show();
+            this.Dispose();
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
         {
 
         }

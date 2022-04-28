@@ -9,12 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace ProyectoLBD
 {
-    public partial class Form3 : Form
+    public partial class Form10 : Form
     {
-        public Form3()
+        public Form10()
         {
             InitializeComponent();
             populateGridView();
@@ -22,16 +21,14 @@ namespace ProyectoLBD
             button2.Anchor = AnchorStyles.Right | AnchorStyles.Top;
         }
 
-
-
         public void populateGridView()
         {
             OracleConnection conexion = new OracleConnection("DATA SOURCE = ORCL; PASSWORD = proyecto1; USER ID = proyecto1;");
             conexion.Open();
-            OracleCommand comando = new OracleCommand("SELECCIONAR_LAVADOS_CLIENTES", conexion);
+            OracleCommand comando = new OracleCommand("SELECCIONAR_REGISTROS_ADMIN", conexion);
             comando.CommandType = System.Data.CommandType.StoredProcedure;
             /*añadir los parámetros*/
-            comando.Parameters.Add("filas2", OracleType.Cursor).Direction = ParameterDirection.Output;
+            comando.Parameters.Add("filas7", OracleType.Cursor).Direction = ParameterDirection.Output;
             /*si hay mas parametros se usa el comando cuantas veces sea necesario*/
             /*adaptador para ajustar de Oracle a C#. Convierte informacion en la base al tipo de info en C# */
             OracleDataAdapter adaptador = new OracleDataAdapter();
@@ -48,26 +45,28 @@ namespace ProyectoLBD
             conexion.Close();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form7 F7 = new Form7();
+            F7.Show();
+            this.Dispose();
+        }
+
+        private void Form10_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void Form3_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Form2 F1 = new Form2();
-            F1.Show();
-            this.Dispose();
-        }
+       
     }
 }

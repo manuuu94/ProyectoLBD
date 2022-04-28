@@ -29,29 +29,6 @@ namespace ProyectoLBD
     
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-             textBox4.PasswordChar = '*';
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (textBox3.Text.Equals("") && textBox4.Text.Equals(""))
-            { //Por ahora deja campos "" para entrar 
-                Form2 F1 = new Form2();
-                F1.Show();
-                
-            }
-            else
-            {
-                MessageBox.Show("Usuario o contraseña incorrectos");
-            }
-        }
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -62,6 +39,29 @@ namespace ProyectoLBD
         {
             Form5 F5 = new Form5();
             F5.Show();
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            Form2 F1 = new Form2();
+            F1.Show();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Form6 F6 = new Form6();
+            F6.Show();
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
